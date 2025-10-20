@@ -1,4 +1,4 @@
-public class Main {
+public class Main1 {
     public static void main(String[] args) {
         Computador pc = new Computador(7500, 18000, 4, 2000d);
         Sistema_operacional sistema_operacional = new Sistema_operacional(pc);
