@@ -42,8 +42,17 @@ public class Main {
                     System.out.print("Matrícula: ");
                     int matricula = sc.nextInt();
                     sc.nextLine();
-                    pessoas.add(new Usuario(nomeU, emailU, matricula));
-                    System.out.println("Usuário cadastrado com sucesso!\n");
+                    try {
+                        pessoas.add(new Usuario(nomeU, emailU, matricula));
+                        System.out.println("Usuário cadastrado com sucesso!\n");
+                    } catch (NomeInvalidoException e) {
+                        System.out.println("Nome Inválido!");
+                    } catch (EmailInvalidoException e) {
+                        System.out.println("E-mail Inválido!");  
+                    } catch (Exception e) {
+                        System.out.println("Aldo deu errado. Tente novamente!");
+                    }
+                    
                     break;
 
                 case 2:
@@ -121,10 +130,16 @@ public class Main {
                     System.out.print("Data de devolução: ");
                     String dataD = sc.nextLine();
 
-                    emprestimos.add(new Emprestimo(pessoas.get(idxUsuario),
+                    try {
+                        emprestimos.add(new Emprestimo(pessoas.get(idxUsuario),
                                                    materiais.get(idxMaterial),
                                                    dataE, dataD));
-                    System.out.println("Empréstimo cadastrado!\n");
+                        System.out.println("Empréstimo cadastrado!\n");
+                     
+                    } catch (IndexOutOfBoundsException e) {
+                        System.out.println("Escolha uma opção válida na lista de pessoas e materiais.");
+                    }
+
                     break;
 
                 case 8:
